@@ -1,0 +1,30 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<h2>UPLOADED FILES</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Files</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for files in allfile %}
+        <tr>
+            {% if files.user == request.user %}
+            <td>
+               <a href="../media/{{ files.files }}">{{ files.files }}</a>  
+            </td>
+            <td>
+                {{ files.sizef }} mb
+            </td>
+            <td>
+                <a href="/delete_file/{{ files.id }}/">delete</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock content %}

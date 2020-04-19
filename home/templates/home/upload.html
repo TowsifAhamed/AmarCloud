@@ -1,0 +1,10 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<form method="post" action="../upload/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="documents" id="documents">
+    <button type="submit">Upload File</button>
+</form>
+{% endif %}
+{% endblock content %}

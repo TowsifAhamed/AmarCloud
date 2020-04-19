@@ -1,0 +1,15 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<h2> File Upload </h2>
+{% if sum > 200000 %}
+<b>You're out of space!!</b><br>
+{% else %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">Upload File</button>
+</form>
+{% endif %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+{% load mathfilters %}
+{% block content %}
+{% if user.profile.valid %}
+{% if sum > 200000 %}
+<b>You're out of space</b><br>
+{% else %}
+<a href="/upload_file/">upload</a><br>
+{% endif %}
+<a href="/file_list/">see uploaded files</a><br>
+<!--{% with allsize=0 %}
+{% for files in allfile %}
+    {% if files.user == request.user %}
+        {% with allsize=allsize|add:files.sizef %}
+        {{ allsize }}
+        {% endwith %}
+    {% endif %}
+{% endfor %}
+{{ allsize }}
+{% endwith %}-->
+
+{% endif %}
+{% endblock content %}
